@@ -12,27 +12,38 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var categories: FetchedResults<Category>
+    
+    @State private var showModal = false
 
     var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+        NavigationView {
+          //  .navigationBarTitle("")
+            List {
+                ForEach(categories) { category in
+                    Text("\(category.name!)")
+                }
+                .onDelete(perform: deleteCategories)
             }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            EditButton()
-            
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
+            .toolbar {
+                //EditButton()
+                
+                Button(action: addCategory) {
+                    Label("Add category", systemImage: "plus")
+                }.sheet(isPresented: $showModal, content: {
+                    CreateCategoryView(isPresented: self.$showModal).environment(\.managedObjectContext, viewContext)
+                })
             }
         }
     }
 
-    private func addItem() {
+    private func addCategory() {
+        showModal.toggle()
+    }
+    
+    private func addItem2() {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
@@ -48,9 +59,9 @@ struct ContentView: View {
         }
     }
 
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteCategories(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { categories[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
