@@ -22,7 +22,7 @@ struct ContentView: View {
         NavigationView {
           //  .navigationBarTitle("")
             List {
-                ForEach(categories) { category in
+                ForEach(categories, id: \.id) { category in
                     Text("\(category.name!)")
                 }
                 .onDelete(perform: deleteCategories)
@@ -32,31 +32,16 @@ struct ContentView: View {
                 
                 Button(action: addCategory) {
                     Label("Add category", systemImage: "plus")
-                }.sheet(isPresented: $showModal, content: {
-                    CreateCategoryView(isPresented: self.$showModal).environment(\.managedObjectContext, viewContext)
-                })
+                }
+                
             }
+        }.sheet(isPresented: $showModal) {             CreateCategoryView(isPresented: self.$showModal)
+
         }
     }
 
     private func addCategory() {
         showModal.toggle()
-    }
-    
-    private func addItem2() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
     }
 
     private func deleteCategories(offsets: IndexSet) {
@@ -66,21 +51,12 @@ struct ContentView: View {
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
     }
 }
-
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

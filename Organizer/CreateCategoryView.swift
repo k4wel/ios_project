@@ -26,18 +26,23 @@ struct CreateCategoryView: View {
                 self.isEditing = isEditing
             }
             Button(action: {
+                
+        
+                
                 let newCategory = Category(context: viewContext)
                 newCategory.id = UUID()
                 newCategory.name = self.name
                 
                 do {
                     try viewContext.save()
+                    //isPresented.toggle()
                 } catch {
                     let nsError = error as NSError
                     fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
                 }
                 
-                isPresented.toggle()
+                isPresented = false
+                
                 //presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Create")
