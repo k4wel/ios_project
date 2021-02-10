@@ -13,6 +13,8 @@ struct CategoryView: View {
     
     var category : Category
     
+    @State private var showModal = false
+    
     var body: some View {
         NavigationView {
             List {
@@ -31,9 +33,21 @@ struct CategoryView: View {
     }
     
     private func addNote() {
-        
+        showModal.toggle()
     }
-}
+    
+    private func deleteCategories(offsets: IndexSet) {
+        withAnimation {
+            offsets.map { categories[$0] }.forEach(viewContext.delete)
+
+            do {
+                try viewContext.save()
+            } catch {
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        }
+    }}
 
 struct CategoryView_Previews: PreviewProvider {
     static var previews: some View {

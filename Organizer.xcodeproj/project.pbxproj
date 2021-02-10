@@ -13,10 +13,9 @@
 		3F3A570825D01FD8006BE3A8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F3A570725D01FD8006BE3A8 /* Preview Assets.xcassets */; };
 		3F3A570A25D01FD8006BE3A8 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3A570925D01FD8006BE3A8 /* Persistence.swift */; };
 		3F3A570D25D01FD8006BE3A8 /* Organizer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F3A570B25D01FD8006BE3A8 /* Organizer.xcdatamodeld */; };
+		3F9781D725D3DA5000594E36 /* CreateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9781D625D3DA5000594E36 /* CreateNoteView.swift */; };
 		913896C325D2F140004BBE21 /* CreateCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913896C225D2F140004BBE21 /* CreateCategoryView.swift */; };
 		91C56D2D25D33EE500F7967E /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C56D2C25D33EE500F7967E /* CategoryView.swift */; };
-		91C56D3125D3416200F7967E /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C56D2F25D3416200F7967E /* Category+CoreDataClass.swift */; };
-		91C56D3225D3416200F7967E /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C56D3025D3416200F7967E /* Category+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +27,9 @@
 		3F3A570925D01FD8006BE3A8 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		3F3A570C25D01FD8006BE3A8 /* Organizer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Organizer.xcdatamodel; sourceTree = "<group>"; };
 		3F3A570E25D01FD8006BE3A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F9781D625D3DA5000594E36 /* CreateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteView.swift; sourceTree = "<group>"; };
 		913896C225D2F140004BBE21 /* CreateCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryView.swift; sourceTree = "<group>"; };
 		91C56D2C25D33EE500F7967E /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
-		91C56D2F25D3416200F7967E /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataClass.swift"; sourceTree = "<group>"; };
-		91C56D3025D3416200F7967E /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +46,6 @@
 		3F3A56F425D01FD7006BE3A8 = {
 			isa = PBXGroup;
 			children = (
-				91C56D2F25D3416200F7967E /* Category+CoreDataClass.swift */,
-				91C56D3025D3416200F7967E /* Category+CoreDataProperties.swift */,
 				3F3A56FF25D01FD7006BE3A8 /* Organizer */,
 				3F3A56FE25D01FD7006BE3A8 /* Products */,
 			);
@@ -69,6 +65,7 @@
 				3F3A570025D01FD7006BE3A8 /* OrganizerApp.swift */,
 				3F3A570225D01FD7006BE3A8 /* ContentView.swift */,
 				91C56D2C25D33EE500F7967E /* CategoryView.swift */,
+				3F9781D625D3DA5000594E36 /* CreateNoteView.swift */,
 				913896C225D2F140004BBE21 /* CreateCategoryView.swift */,
 				3F3A570425D01FD8006BE3A8 /* Assets.xcassets */,
 				3F3A570925D01FD8006BE3A8 /* Persistence.swift */,
@@ -158,12 +155,11 @@
 			files = (
 				3F3A570A25D01FD8006BE3A8 /* Persistence.swift in Sources */,
 				913896C325D2F140004BBE21 /* CreateCategoryView.swift in Sources */,
-				91C56D3125D3416200F7967E /* Category+CoreDataClass.swift in Sources */,
+				3F9781D725D3DA5000594E36 /* CreateNoteView.swift in Sources */,
 				91C56D2D25D33EE500F7967E /* CategoryView.swift in Sources */,
 				3F3A570325D01FD7006BE3A8 /* ContentView.swift in Sources */,
 				3F3A570125D01FD7006BE3A8 /* OrganizerApp.swift in Sources */,
 				3F3A570D25D01FD8006BE3A8 /* Organizer.xcdatamodeld in Sources */,
-				91C56D3225D3416200F7967E /* Category+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
