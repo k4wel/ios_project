@@ -27,6 +27,7 @@ struct ContentView: View {
                 }
                 .onDelete(perform: deleteCategories)
             }
+            .navigationBarTitle("Categories")
             .toolbar {
                 //EditButton()
                 

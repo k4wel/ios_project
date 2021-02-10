@@ -26,9 +26,6 @@ struct CreateCategoryView: View {
                 self.isEditing = isEditing
             }
             Button(action: {
-                
-        
-                
                 let newCategory = Category(context: viewContext)
                 newCategory.id = UUID()
                 newCategory.name = self.name
