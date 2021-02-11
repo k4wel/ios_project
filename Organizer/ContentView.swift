@@ -23,7 +23,10 @@ struct ContentView: View {
           //  .navigationBarTitle("")
             List {
                 ForEach(categories, id: \.id) { category in
-                    Text("\(category.name!)")
+                    NavigationLink(destination:
+                                    CategoryView(categoryId: category.id!)) {
+                        Text("\(category.name!)")
+                    }
                 }
                 .onDelete(perform: deleteCategories)
             }
