@@ -13,20 +13,36 @@ struct CreateNoteView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
     
-    var category : Category
+    var categoryId : UUID
+    
+    private var category : Category? {
+        let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", categoryId.uuidString)
+        
+        do {
+            let categories = try viewContext.fetch(fetchRequest)
+            if(categories.count > 0) {
+                return categories[0]
+            } else {
+                presentationMode.wrappedValue.dismiss()
+                return nil
+            }
+        } catch {
+            presentationMode.wrappedValue.dismiss()
+            return nil
+        }
+    }
     
     @State private var title: String = ""
     @State private var text: String = ""
-    
-    @Binding var isPresented: Bool;
-    
+        
     var body: some View {
         VStack {
             TextField ("Title", text: $title)
             TextField("Text", text: $text)
             Button(action: {
                     addNote()
-                    isPresented = false
+                    presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Save")
             }
@@ -44,7 +60,7 @@ struct CreateNoteView: View {
             
             //try viewContext.save()
             
-            category.addToNotes(newNote)
+            category!.addToNotes(newNote)
             
             try updateCounter(newNr)
             

@@ -16,6 +16,7 @@
 		3F9781D725D3DA5000594E36 /* CreateNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9781D625D3DA5000594E36 /* CreateNoteView.swift */; };
 		913896C325D2F140004BBE21 /* CreateCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913896C225D2F140004BBE21 /* CreateCategoryView.swift */; };
 		91C56D2D25D33EE500F7967E /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C56D2C25D33EE500F7967E /* CategoryView.swift */; };
+		91C675C425D57A0D005FCDA8 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C675C325D57A0D005FCDA8 /* NoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		3F9781D625D3DA5000594E36 /* CreateNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteView.swift; sourceTree = "<group>"; };
 		913896C225D2F140004BBE21 /* CreateCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCategoryView.swift; sourceTree = "<group>"; };
 		91C56D2C25D33EE500F7967E /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		91C675C325D57A0D005FCDA8 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				3F3A570025D01FD7006BE3A8 /* OrganizerApp.swift */,
 				3F3A570225D01FD7006BE3A8 /* ContentView.swift */,
 				91C56D2C25D33EE500F7967E /* CategoryView.swift */,
+				91C675C325D57A0D005FCDA8 /* NoteView.swift */,
 				3F9781D625D3DA5000594E36 /* CreateNoteView.swift */,
 				913896C225D2F140004BBE21 /* CreateCategoryView.swift */,
 				3F3A570425D01FD8006BE3A8 /* Assets.xcassets */,
@@ -155,6 +158,7 @@
 			files = (
 				3F3A570A25D01FD8006BE3A8 /* Persistence.swift in Sources */,
 				913896C325D2F140004BBE21 /* CreateCategoryView.swift in Sources */,
+				91C675C425D57A0D005FCDA8 /* NoteView.swift in Sources */,
 				3F9781D725D3DA5000594E36 /* CreateNoteView.swift in Sources */,
 				91C56D2D25D33EE500F7967E /* CategoryView.swift in Sources */,
 				3F3A570325D01FD7006BE3A8 /* ContentView.swift in Sources */,
