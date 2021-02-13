@@ -26,7 +26,9 @@ struct CategoryView: View {
     var body: some View {
         List {
             ForEach(notes, id: \.nr) { note in
-                Text("\(note.title!)")
+                NavigationLink(destination: NoteView(note: note)) {
+                    Text("\(note.title!)")
+                }
             }
             .onDelete(perform: deleteNotes)
         }

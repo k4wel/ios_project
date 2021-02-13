@@ -9,12 +9,34 @@ import SwiftUI
 
 struct NoteView: View {
     
-    @Binding var note: Note
+    @Environment(\.managedObjectContext) private var viewContext
+
+    private var note: Note
+    
+    @State private var newTitle: String
+    @State private var newText: String
+   
+    init(note: Note) {
+        self.note = note
+        self._newTitle = State(wrappedValue: note.title!)
+        self._newText = State(wrappedValue: note.text!)
+    }
     
     var body: some View {
         VStack {
-            TextField("Title", text: $(note.title))
-            TextField("Text", text: $(note.text))
+            TextField("Title", text: $newTitle, onEditingChanged: {_ in saveNote()})
+            TextField("Text", text: $newText, onEditingChanged: {_ in saveNote()})
+        }//.onDisappear(perform: saveNote)
+    }
+    
+    private func saveNote() {
+        note.title = newTitle
+        note.text = newText
+        
+        do {
+            try viewContext.save()
+        } catch {
+        
         }
     }
 }
