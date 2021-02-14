@@ -23,10 +23,29 @@ struct NoteView: View {
     }
     
     var body: some View {
-        VStack {
-            TextField("Title", text: $newTitle, onEditingChanged: {_ in saveNote()})
-            TextField("Text", text: $newText, onEditingChanged: {_ in saveNote()})
-        }//.onDisappear(perform: saveNote)
+        ScrollView {
+            VStack(spacing: 25.0) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 10.0)
+                        .fill(Color.white)
+                        .shadow(radius: 3)
+                        .frame(height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    TextField("Title", text: $newTitle, onEditingChanged: {_ in saveNote()})
+                        .padding(.leading, 5)
+                }
+                ZStack {
+                    Rectangle()
+                        .fill(Color.white)
+                        .shadow(radius: 3)
+                    TextEditor(text: $newText)
+                        .lineLimit(nil)
+                }
+            }
+            .padding(.horizontal, 10)
+            .padding(.top, 10)
+        }
+        .onDisappear(perform: saveNote)
+        .navigationTitle("#\(note.nr)")
     }
     
     private func saveNote() {
@@ -36,13 +55,14 @@ struct NoteView: View {
         do {
             try viewContext.save()
         } catch {
-        
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
 }
 
-/*struct NoteView_Previews: PreviewProvider {
+struct NoteView_Previews: PreviewProvider {
     static var previews: some View {
-        NoteView()
+        NoteView(note: Note())
     }
-}*/
+}

@@ -10,7 +10,6 @@ import SwiftUI
 struct CreateCategoryView: View {
     
     @State private var name: String = ""
-    @State private var isEditing = false
     
     @Environment(\.presentationMode) private var presentationMode
     @Environment(\.managedObjectContext) private var viewContext
@@ -18,32 +17,39 @@ struct CreateCategoryView: View {
     @Binding var isPresented: Bool
     
     var body: some View {
-        VStack {
-            TextField(
-                "Category name",
-                text: $name
-            ) { isEditing in
-                self.isEditing = isEditing
+        VStack(spacing: 25.0) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.white)
+                    .shadow(radius: 3)
+                    .frame(height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                TextField(
+                    "Category name",
+                    text: $name
+                )
+                .padding(.leading, 3.0)
             }
             Button(action: {
-                let newCategory = Category(context: viewContext)
-                newCategory.id = UUID()
-                newCategory.name = self.name
-                
-                do {
-                    try viewContext.save()
-                    //isPresented.toggle()
-                } catch {
-                    let nsError = error as NSError
-                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                }
-                
+                saveCategory()
                 isPresented = false
-                
-                //presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Create")
+                    .font(.title2)
             }
+        }
+        .padding(.horizontal, 10)
+    }
+    
+    private func saveCategory() {
+        let newCategory = Category(context: viewContext)
+        newCategory.id = UUID()
+        newCategory.name = self.name
+        
+        do {
+            try viewContext.save()
+        } catch {
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
 }

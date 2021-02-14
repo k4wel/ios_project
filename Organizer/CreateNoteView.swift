@@ -37,16 +37,32 @@ struct CreateNoteView: View {
     @State private var text: String = ""
         
     var body: some View {
-        VStack {
-            TextField ("Title", text: $title)
-            TextField("Text", text: $text)
+        VStack(spacing: 25.0) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.white)
+                    .shadow(radius: 3)
+                    .frame(height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                TextField ("Title", text: $title)
+                    .padding(.leading, 3)
+            }
+            ZStack {
+                Rectangle()
+                    .fill(Color.white)
+                    .shadow(radius: 3)
+                TextEditor(text: $text)
+                    //.border(Color.gray, width: 1)
+            }
             Button(action: {
                     addNote()
                     presentationMode.wrappedValue.dismiss()
             }) {
                 Text("Save")
+                    .font(.title2)
             }
         }
+        .padding(.horizontal, 10)
+        .padding(.vertical, 20)
     }
     
     private func addNote() {
