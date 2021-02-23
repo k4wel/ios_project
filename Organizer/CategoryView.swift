@@ -13,8 +13,11 @@ struct CategoryView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var showModal = false
-   
-    var categoryId: UUID;
+       
+    var categoryId: UUID
+    var category: Category
+    
+    @State private var test: String = ""
                
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \Note.nr, ascending: true)])
     private var allNotes: FetchedResults<Note>
@@ -33,9 +36,9 @@ struct CategoryView: View {
             .onDelete(perform: deleteNotes)
         }
         .sheet(isPresented: $showModal) {
-            CreateNoteView(categoryId: categoryId)
+            CreateNoteView(category: category)
         }
-        .navigationBarTitle("Notes")
+        .navigationBarTitle(category.name!)
         .toolbar {
             Button(action: addNote) {
                 Label("Add note", systemImage: "plus")

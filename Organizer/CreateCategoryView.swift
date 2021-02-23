@@ -22,7 +22,7 @@ struct CreateCategoryView: View {
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
                     .shadow(radius: 3)
-                    .frame(height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .frame(height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 TextField(
                     "Category name",
                     text: $name

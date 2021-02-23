@@ -29,7 +29,7 @@ struct NoteView: View {
                     RoundedRectangle(cornerRadius: 10.0)
                         .fill(Color.white)
                         .shadow(radius: 3)
-                        .frame(height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .frame(height: 40, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     TextField("Title", text: $newTitle, onEditingChanged: {_ in saveNote()})
                         .padding(.leading, 5)
                 }
@@ -39,6 +39,7 @@ struct NoteView: View {
                         .shadow(radius: 3)
                     TextEditor(text: $newText)
                         .lineLimit(nil)
+                        
                 }
             }
             .padding(.horizontal, 10)

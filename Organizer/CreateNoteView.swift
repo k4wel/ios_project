@@ -13,25 +13,7 @@ struct CreateNoteView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @Environment(\.presentationMode) private var presentationMode
     
-    var categoryId : UUID
-    
-    private var category : Category? {
-        let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
-        fetchRequest.predicate = NSPredicate(format: "id == %@", categoryId.uuidString)
-        
-        do {
-            let categories = try viewContext.fetch(fetchRequest)
-            if(categories.count > 0) {
-                return categories[0]
-            } else {
-                presentationMode.wrappedValue.dismiss()
-                return nil
-            }
-        } catch {
-            presentationMode.wrappedValue.dismiss()
-            return nil
-        }
-    }
+    var category: Category
     
     @State private var title: String = ""
     @State private var text: String = ""
@@ -76,7 +58,7 @@ struct CreateNoteView: View {
             
             //try viewContext.save()
             
-            category!.addToNotes(newNote)
+            category.addToNotes(newNote)
             
             try updateCounter(newNr)
             

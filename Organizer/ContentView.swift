@@ -20,11 +20,10 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-          //  .navigationBarTitle("")
             List {
                 ForEach(categories, id: \.id) { category in
                     NavigationLink(destination:
-                                    CategoryView(categoryId: category.id!)) {
+                                    CategoryView(categoryId: category.id!, category: category)) {
                         Text("\(category.name!)")
                     }
                 }
@@ -39,8 +38,7 @@ struct ContentView: View {
                 }
                 
             }
-        }.sheet(isPresented: $showModal) {             CreateCategoryView(isPresented: self.$showModal)
-
+        }.sheet(isPresented: $showModal) { CreateCategoryView(isPresented: self.$showModal)
         }
     }
 
